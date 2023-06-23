@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="/style.css">
+    <title>Articus</title>
+</head>
+<body>
+    <header>
+      <a href="/">Articus</a>
+      
+        <form action="/search" method="post">
+            <input type="text" name="query" placeholder="Search for free Images" required>
+            <button type="submit">GO</button>
+        </form>
+
+        <button class="addToFav">
+            <a  href='/favorites' class="material-symbols-outlined">
+                favorite
+            </a>
+        </button>
+    </header>
+
+
+
+    <section>
+
+  <% if(response.length > 0) { %>
+
+   <% response.forEach((res) =>{ %>
+
+    <div class="image_card">
+        <div class="credit">
+            <span class="material-symbols-outlined">
+             photo_camera
+          </span>
+          <a href="<%= res.user.portfolio_url %>" target="_blank">
+            <%= res.user.username %>
+          </a>
+        </div>
+        <img src="<%= res.urls.regular %> " alt="<%= res.alt_description %>" >
+        <div class="action_btns">
+          
+          <button class="material-symbols-outlined" onclick="addToFav('<%= res.user.username %>', '<%= res.urls.regular %>', '<%= res.user.portfolio_url%>')">
+            favorite
+          </button>
+          
+          
+            </button>
+            <button>
+              <a href="<%= res.links.download %>" download="<%= res.links.alt_description %>" class="material-symbols-outlined">
+                download
+              </a>
+              </button>
+        </div>
+       </div>
+
+
+   <%})%>
+
+
+
+  <%} else {%>
+   <p>
+    An Error Occured :(
+   </p>
+
+  <%}%>
+
+    </section>
+
+
+
+<div class="pagination">
+ <button>
+  <a href="/?page=1">1</a>
+ </button>
+ <button>
+  <a href="/?page=2">2</a>
+ </button>
+ <button>
+  <a href="/?page=3">3</a>
+ </button>
+ <button>
+  <a href="/?page=4">4</a>
+ </button>
+ <button>
+  <a href="/?page=5">5</a>
+ </button>
+</div>
+
+
+
+    <script>
+      const localStorageData = JSON.parse(localStorage.getItem('photoVault') || '[]');
+    
+      function addToFav(username, url, user) {
+        const favorite = {
+          url: url,
+          username: username,
+          user_url: user
+        };
+    
+        localStorageData.push(favorite);
+        localStorage.setItem('photoVault', JSON.stringify(localStorageData));
+
+       // console.log(localStorageData)
+      }
+    </script>
+    
+
+</body>
+</html>
