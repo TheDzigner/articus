@@ -1,16 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/head.ejs') %>
     <title>Articus | Favorites</title>
 </head>
 <body>
     
 
+<header>
+    <a href="/">articus</a>
+</header>
 
-
+<section class="content" id="App">
  
+ <div v-for="images in data" :key="images">
+
+    <div class="image_card">
+        <div class="credit">
+            <span class="material-symbols-outlined">
+             photo_camera
+          </span>
+          <a :href="images.user_url" target="_blank">
+         {{ images.username }}
+          </a>
+        </div>
+        <img :src="images.url" alt="" >
+        <div class="action_btns">
+          
+          <button class="material-symbols-outlined" @click="removeFromFavorite(images)">
+            remove
+          </button>
+          
+          
+            </button>
+            <button>
+              <a class="material-symbols-outlined">
+                download
+              </a>
+              </button>
+        </div>
+       </div>
+ </div>
+
+
+</section>
+  
+
+
+<script>
+
+const localStorageData = JSON.parse(localStorage.getItem('photoVault') || 
+'[]');
+    
+
+ const app = Vue.createApp({
+
+  data(){
+    return{
+        data : localStorageData
+    }
+  },
+  methods:{
+     
+    removeFromFavorite(id){
+
+    if (confirm('Delete image ?')) {
+        this.data = this.data.filter((i) => i !== id);
+        localStorage.setItem('photoVault', JSON.stringify(this.data))
+    }
+
+    }
+
+    }
+
+
+ }).mount('#App')
+
+</script>
 
 
 

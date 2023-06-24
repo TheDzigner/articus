@@ -57,6 +57,14 @@ loadImage(1)
   // }
 // });
 
+// server.get('/:id', (req, res) =>{
+
+// const id = req.params.id
+
+// console.log(id)
+// res.send('Hellow')
+// })
+
 server.post('/search', async (req, res) => {
   const query = req.body.query;
   searchQuery = query;
@@ -83,10 +91,10 @@ server.get('/', (req, res) => {
     });
 });
 
+  server.get('/favorites', (req, res) => {
+    res.render('favorite');
+  });
 
-server.get('/favorites', (req, res) => {
-  res.render('favorite', { response: response });
-});
 
 // launch the server
 server.listen(PORT, () => {

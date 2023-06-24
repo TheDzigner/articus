@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
 body{
     max-width: 1200px;
     height: 100vh;
     margin: 0 auto 0;
     transform: all .2s ease-in-out;
+    font-family: 'Ysabeau SC', sans-serif;
+    scroll-behavior: smooth;
 }
 
 header{
@@ -22,6 +25,14 @@ header{
     background-color: #FFFFFF;
     box-shadow: 0 0 .2em rgba(3,3,3,.3);
     padding:1em;
+}
+ 
+header  a{
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: 800;
+  font-family: 'Ysabeau SC', sans-serif;
+  text-transform: uppercase;
 }
 
 header .addToFav{
@@ -53,6 +64,9 @@ header form input{
     outline: none;
     border: transparent;
     background-color: #FFFFFF;
+    font-family: 'Ysabeau SC', sans-serif;
+    color:#b8c500;
+    font-size: 1.2em;
     box-shadow: 0 0 .2em rgba(3,3,3,.3);
 }
 
@@ -62,10 +76,14 @@ header form button{
     display: inline-block;
     margin: 0 1em 0;
     cursor: pointer;
+    font-family: 'Ysabeau SC', sans-serif;
+    border: none;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 .2em rgba(3,3,3,.3);
 }
 
 
-section{
+.content{
     width: 100%;
     margin: 10% auto 0;
     gap: 2em;
@@ -75,7 +93,7 @@ section{
     flex-wrap: wrap;
 }
 
-section .image_card{
+.content .image_card{
     width: 20rem;
     height: 30rem;
     margin: 0;
@@ -85,7 +103,7 @@ section .image_card{
     box-shadow: 0 0 .3em rgba(0,0,0,.4);
 }
 
-section .image_card .credit{
+.content .image_card .credit{
     position: absolute;
     top: 0;
     width: 100%;
@@ -96,25 +114,27 @@ section .image_card .credit{
     padding: 1em;
     background-color: rgba(183,185,190,.5);
 }
-section .image_card .credit span 
+
+.content .image_card .credit span 
 {
     display: inline-block;
     margin: 0;
 }
- section .image_card .credit a{
+
+ .content .image_card .credit a{
     text-decoration-line: underline;
     text-decoration-color: #cccc;
     color: #333333;
     padding: 0 .2em 0;
  }
 
-section .image_card img{
+ .content .image_card img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-section .action_btns{
+.content .action_btns{
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -124,10 +144,10 @@ section .action_btns{
     padding: 1em;
 }
 
-section .action_btns button{
+.content .action_btns button{
     margin: 0 1em 0;
 }
-section .action_btns button a{
+.content .action_btns button a{
     text-decoration: none;
     color: #333;
 }
