@@ -1,4 +1,11 @@
 {
+  "name": "articus",
+  "version": "1.0.0",
+  "description": "images gallery",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "cross-fetch": "^3.1.6",
@@ -7,13 +14,6 @@
     "node-fetch": "^3.3.1",
     "nodemon": "^2.0.22"
   },
-  "name": "articus",
-  "version": "1.0.0",
-  "description": "images galery",
-  "main": "server.js",
-  "scripts":{
-    "start": "node server.js"
-  },
-  "author": "",
+  "author": "Sanon Loick",
   "license": "ISC"
 }
